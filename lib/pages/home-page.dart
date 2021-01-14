@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_demo/controllers/home-controller.dart';
+import 'package:getx_demo/widgets/home/label-widget.dart';
 
 class HomePage extends StatelessWidget {
 
@@ -14,10 +15,7 @@ class HomePage extends StatelessWidget {
         print('renderizando el widget completo DE HOME');
         return Scaffold(
           body: Center(
-            child: GetBuilder<HomeController>(
-              id: 'builderContador',
-              builder: (_) => Text( vController.getCounter.toString() )
-            )
+            child: LabelWidget()
           ),
           floatingActionButton: FloatingActionButton(
             child: Icon( Icons.add ),
