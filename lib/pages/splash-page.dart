@@ -7,6 +7,7 @@ class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<SplashController>(
+      dispose: (state) => { print('NOS FUIMOS, Destruyendo widget') },
       init: SplashController(),
       builder: (vController) => Scaffold(
         body: Center(

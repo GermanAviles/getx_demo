@@ -8,8 +8,15 @@ class SplashController extends GetxController {
     super.onReady();
     Future.delayed( Duration( seconds: 2 ), (){
       // Navegamos hacía el home
-      Get.to( HomePage(), transition: Transition.cupertinoDialog );
+      // Get.to( HomePage(), transition: Transition.cupertinoDialog );
+      Get.off( HomePage(), transition: Transition.cupertinoDialog );
     });
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
+    print('Destruyendo el widget desde el controller');
   }
 
 }
