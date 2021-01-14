@@ -10,14 +10,14 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(
       init: HomeController(),
-      builder: ( _ ) => Scaffold(
+      builder: ( vController ) => Scaffold(
         body: Center(
-          child: Text( _.counter.toString() )
+          child: Text( vController.getCounter.toString() )
         ),
         floatingActionButton: FloatingActionButton(
           child: Icon( Icons.add ),
           onPressed: (){
-            _.increment();
+            vController.increment();
           },
         ),
       )
