@@ -10,17 +10,23 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(
       init: HomeController(),
-      builder: ( vController ) => Scaffold(
-        body: Center(
-          child: Text( vController.getCounter.toString() )
-        ),
-        floatingActionButton: FloatingActionButton(
-          child: Icon( Icons.add ),
-          onPressed: (){
-            vController.increment();
-          },
-        ),
-      )
+      builder: ( vController ) {
+        print('renderizando el widget completo DE HOME');
+        return Scaffold(
+          body: Center(
+            child: GetBuilder<HomeController>(
+              id: 'builderContador',
+              builder: (_) => Text( vController.getCounter.toString() )
+            )
+          ),
+          floatingActionButton: FloatingActionButton(
+            child: Icon( Icons.add ),
+            onPressed: (){
+              vController.increment();
+            },
+          ),
+        );
+      }
     );
   }
 }

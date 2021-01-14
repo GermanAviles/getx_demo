@@ -25,6 +25,6 @@ class HomeController extends GetxController {
 
   void increment() {
     this._counter++;
-    update();
+    update(['builderContador']);
   }
 }
