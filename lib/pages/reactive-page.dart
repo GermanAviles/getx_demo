@@ -10,25 +10,42 @@ class ReactivePage extends StatelessWidget {
       builder: (_) {
         return Scaffold(
           body: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Obx(() {
-                  print('[CONTADOR]');
-                  return Text(
-                    _.counter.value.toString(),
-                    style: TextStyle( fontSize: 30 ),
+            child: Obx( () {
+              return ListView.builder(
+                itemBuilder: (__, index){
+                  final String text = _.items[ index ];
+                  return ListTile(
+                    title: Text( text.substring(0, 19) ),
+                    trailing: IconButton(
+                      icon: Icon( Icons.delete, color: Colors.red[300] ),
+                      onPressed: () {
+                        _.removeItem(index);
+                      }
+                    ),
                   );
-                }),
-                Obx(() {
-                  print('[FECHA]');
-                  return Text(
-                    _.date.value.substring(0, 19),
-                    style: TextStyle( fontSize: 30 ),
-                  );
-                }),
-              ],
-            )
+                },
+                itemCount: _.items.length,
+              );
+            }),
+            // Column(
+            //   mainAxisAlignment: MainAxisAlignment.center,
+            //   children: [
+            //     Obx(() {
+            //       print('[CONTADOR]');
+            //       return Text(
+            //         _.counter.value.toString(),
+            //         style: TextStyle( fontSize: 30 ),
+            //       );
+            //     }),
+            //     Obx(() {
+            //       print('[FECHA]');
+            //       return Text(
+            //         _.date.value.substring(0, 19),
+            //         style: TextStyle( fontSize: 30 ),
+            //       );
+            //     }),
+            //   ],
+            // )
           ),
           floatingActionButton: Row(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -36,15 +53,16 @@ class ReactivePage extends StatelessWidget {
               FloatingActionButton(
                 child: Icon( Icons.add ),
                 onPressed: (){
-                  _.increment();
+                  _.addItem( DateTime.now().toString() );
+                  // _.increment();
                 },
               ),
-              FloatingActionButton(
-                child: Icon( Icons.calendar_today ),
-                onPressed: (){
-                  _.getDate();
-                },
-              ),
+              // FloatingActionButton(
+              //   child: Icon( Icons.calendar_today ),
+              //   onPressed: (){
+              //     _.getDate();
+              //   },
+              // ),
             ],
           ),
         );
