@@ -11,21 +11,32 @@ class ReactivePage extends StatelessWidget {
         return Scaffold(
           body: Center(
             child: Obx( () {
-              return ListView.builder(
-                itemBuilder: (__, index){
-                  final String text = _.items[ index ];
-                  return ListTile(
-                    title: Text( text.substring(0, 19) ),
-                    trailing: IconButton(
-                      icon: Icon( Icons.delete, color: Colors.red[300] ),
-                      onPressed: () {
-                        _.removeItem(index);
-                      }
-                    ),
-                  );
-                },
-                itemCount: _.items.length,
+              return ListView(
+                children: _.mapItems.values.map((e) => ListTile(
+                  title: Text(e),
+                  trailing: IconButton(
+                    icon: Icon( Icons.delete, color: Colors.red[300] ),
+                    onPressed: () {
+                      _.removeMapItem( e );
+                    }
+                  ),
+                )).toList(),
               );
+              // return ListView.builder(
+              //   itemCount: _.items.length,
+              //   itemBuilder: (__, index){
+              //     final String text = _.items[ index ];
+              //     return ListTile(
+              //       title: Text( text.substring(0, 19) ),
+              //       trailing: IconButton(
+              //         icon: Icon( Icons.delete, color: Colors.red[300] ),
+              //         onPressed: () {
+              //           _.removeItem(index);
+              //         }
+              //       ),
+              //     );
+              //   },
+              // );
             }),
             // Column(
             //   mainAxisAlignment: MainAxisAlignment.center,
@@ -53,7 +64,8 @@ class ReactivePage extends StatelessWidget {
               FloatingActionButton(
                 child: Icon( Icons.add ),
                 onPressed: (){
-                  _.addItem( DateTime.now().toString() );
+                  _.addMapItem();
+                  // _.addItem( DateTime.now().toString() );
                   // _.increment();
                 },
               ),
