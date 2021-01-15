@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:get/route_manager.dart';
 import 'package:getx_demo/api/users-api.dart';
 import 'package:getx_demo/models/users.dart';
 import 'package:getx_demo/pages/profile-page.dart';

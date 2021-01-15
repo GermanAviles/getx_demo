@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/route_manager.dart';
 import 'package:getx_demo/models/users.dart';
 
 class ProfileController extends GetxController {
