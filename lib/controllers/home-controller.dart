@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:getx_demo/api/users-api.dart';
 import 'package:getx_demo/models/users.dart';
+import 'package:getx_demo/pages/profile-page.dart';
 
 class HomeController extends GetxController {
   int _counter = 0;
@@ -41,5 +42,9 @@ class HomeController extends GetxController {
     this._counter++;
     // update( idController, condicionParaRenderizar )
     update(['builderContador'], this._counter > 1);
+  }
+
+  showUserProfile(User user) {
+    Get.to( ProfilePage(), arguments: user );
   }
 }
