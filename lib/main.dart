@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_demo/controllers/global-controller.dart';
+import 'package:getx_demo/pages/reactive-page.dart';
 // import 'package:getx_demo/pages/home-page.dart';
-import 'package:getx_demo/pages/splash-page.dart';
+// import 'package:getx_demo/pages/splash-page.dart';
 
 void main() {
   runApp(MyApp());
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: SplashPage(),
+      // home: SplashPage(),
+      home: ReactivePage(),
     );
   }
 }
