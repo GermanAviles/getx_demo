@@ -44,7 +44,10 @@ class HomeController extends GetxController {
     update(['builderContador'], this._counter > 1);
   }
 
-  showUserProfile(User user) {
-    Get.to( ProfilePage(), arguments: user );
+  Future<void> showUserProfile(User user) async {
+    final result = await Get.to<String>( ProfilePage(), arguments: user );
+    if (result != null) {
+      print('[RESULT HOME]: $result');
+    }
   }
 }
