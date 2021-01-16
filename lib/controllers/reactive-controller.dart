@@ -26,7 +26,8 @@ class ReactiveController extends GetxController {
 
   void addMapItem() {
     // mapItems.assign(DateTime.now().toString().substring(0, 19), DateTime.now().toString().substring(0, 19));
-    mapItems.addIf(true, DateTime.now().toString().substring(0, 19), DateTime.now().toString().substring(0, 19));
+    final String key = DateTime.now().toString().substring(0, 19);
+    mapItems.addIf(true, key, key);
   }
 
   void removeMapItem( index ) {
